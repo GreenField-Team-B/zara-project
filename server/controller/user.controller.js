@@ -27,16 +27,38 @@ module.exports.signUp =  async (req, res) => {
     return res.status(500).send("Server error");
   }
 };
-
-module.exports.logIn = async (req, res) => {
+// login using the email
+module.exports.loginByEmail = async (req, res) => {
   try {
-    const { email, phone_number, password } = req.body;
-    const userByPhoneNumber = await User.findOne({ where: { email: email } })
-    const userByEmail = await User.findOne({ where: { phone_number: phone_number } })
-    if (!userByEmail && !userByPhoneNumber) {
+    const { email, password } = req.body;
+    const user = await User.findOne({ where: { email: email } })
+    
+    if (!user) {
         return res.status(404).json("User does not exist" );
     }
-    const user = userByPhoneNumber || userByEmail
+    const passwordValid = await  bcrypt.compare(password, user.password)
+    if (!passwordValid) {
+      return res.status(400).json( "Password Incorrect" );
+    }
+  
+  const token =  jwt.sign({id : user.id}, dotenv.parsed.SECRET_KEY)
+
+   res.status(200).send(token);
+}
+ catch (error) {
+  
+    return res.status(500).send("Sign in error");
+  }
+}
+// login using the phone_Number
+module.exports.loginByPhoneNumber = async (req, res) => {
+  try {
+    const { phone_number, password } = req.body;
+    const user = await User.findOne({ where: { phone_number: phone_number } })
+    
+    if (!user) {
+        return res.status(404).json("User does not exist" );
+    }
     const passwordValid = await  bcrypt.compare(password, user.password)
     if (!passwordValid) {
       return res.status(400).json( "Password Incorrect" );
