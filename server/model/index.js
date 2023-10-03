@@ -16,13 +16,13 @@ connection
 
   const User = require('./user')(connection,DataTypes)
 
-  // connection
-  // .sync({ force: true })
-  // .then(() => {
-  //   console.log("tables created successfully!");
-  // })
-  // .catch((error) => {
-  //   console.error("Unable to create table : ", error);
-  // });
+  connection
+  .sync({ force: true })
+  .then(() => {
+    console.log("tables created successfully!");
+  })
+  .catch((error) => {
+    console.error("Unable to create table : ", error);
+  });
 
   module.exports = User
