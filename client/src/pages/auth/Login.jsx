@@ -4,13 +4,13 @@ import Footer from '../../components/Footer.jsx'
 import image from './imgs/image.png'
 import './login.scss'
 
-const Login = () => {
+const Login = ({handleLogin}) => {
 
     const [identifier, setIdentifier] = useState('')
     const [password, setPassword] = useState('')
 
     const handleClick = () => {
-
+        handleLogin({identifier, password})
     }
 
   return (
