@@ -37,7 +37,7 @@ module.exports.logIn = async (req, res) => {
     return res.status(400).json( "Password Incorrect" );
   }
   
-  const token = jwt.sign({id : user.id},'hhhhh');
+  const token = jwt.sign({id : user.id},'hhhhh')
 
    res.status(200).send({
     id: user.id,
