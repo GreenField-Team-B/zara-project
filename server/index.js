@@ -1,11 +1,11 @@
 const express = require('express');
 const cors = require('cors');
-const dotenv = require('dotenv')
+// const dotenv = require('dotenv')
 const userRoute = require("./routes/user.routes")
 
 const db = require('./model/index');
 
-const port = 3000;
+const port = 5000;
 const app = express();
 
 app.use(cors());

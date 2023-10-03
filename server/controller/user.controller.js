@@ -1,23 +1,25 @@
 const User = require("../model/index");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
+const dotenv = require('dotenv').config()
+
 //sign up 
 module.exports.signUp =  async (req, res) => {
   try {
     const  { username, email, phone_number, password, role } = req.body;
     const find = await User.findOne({
-      where: { email:req.body.email},
+      where: { email: email},
     });
     if (find) {
       return res.status(400).send("Email already exist");
     }
-    const hashPassword = await bcrypt.hash(req.body.password, 8);
-    const newUser = User.create({
-      username: req.body.username,
-      email: req.body.email,
-      phone_number: req.body.phone_number,
+    const hashPassword = await bcrypt.hash(password, 10);
+    await User.create({
+      username: username,
+      email: email,
+      phone_number: phone_number,
       password: hashPassword,
-      role: req.body.role,
+      role: role
     });
     return res.status(200).send('Registration successful');
     
@@ -59,20 +61,14 @@ module.exports.loginByPhoneNumber = async (req, res) => {
     }
     const passwordValid = await  bcrypt.compare(password, user.password)
     if (!passwordValid) {
-    return res.status(400).json( "Password Incorrect" );
-  }
+      return res.status(400).json( "Password Incorrect" );
+    }
   
-  const token =  jwt.sign({id : user.id}, dotenv.parsed.SECRET_KEY)
+  const token = jwt.sign({id : user.id}, dotenv.parsed.SECRET_KEY)
 
-   res.status(200).send({
-    id: user.id,
-    email: user.email,
-    phone_number: user.phone_number,
-    accessToken: token,
-});
+   res.status(200).send(token);
 }
  catch (error) {
-    console.log(error);
     return res.status(500).send("Sign in error");
   }
 }
