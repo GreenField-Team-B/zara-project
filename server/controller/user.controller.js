@@ -1,23 +1,25 @@
 const User = require("../model/index");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
+const dotenv = require('dotenv').config()
+
 //sign up 
 module.exports.signUp =  async (req, res) => {
   try {
     const  { username, email, phone_number, password, role } = req.body;
     const find = await User.findOne({
-      where: { email:req.body.email},
+      where: { email: email},
     });
     if (find) {
       return res.status(400).send("Email already exist");
     }
-    const hashPassword = await bcrypt.hash(req.body.password, 8);
-    const newUser = User.create({
-      username: req.body.username,
-      email: req.body.email,
-      phone_number: req.body.phone_number,
+    const hashPassword = await bcrypt.hash(password, 10);
+    await User.create({
+      username: username,
+      email: email,
+      phone_number: phone_number,
       password: hashPassword,
-      role: req.body.role,
+      role: role
     });
     return res.status(200).send('Registration successful');
     
@@ -28,27 +30,23 @@ module.exports.signUp =  async (req, res) => {
 
 module.exports.logIn = async (req, res) => {
   try {
-    const { email,phone_number, password } = req.body;
-    const user = await User.findOne({ where: { email: req.body.email } })
-    if (!user) {
+    const { email, phone_number, password } = req.body;
+    const userByPhoneNumber = await User.findOne({ where: { email: email } })
+    const userByEmail = await User.findOne({ where: { phone_number: phone_number } })
+    if (!userByEmail && !userByPhoneNumber) {
         return res.status(404).json("User does not exist" );
     }
-    const passwordValid = await  bcrypt.compare(password,user.password)
+    const user = userByPhoneNumber || userByEmail
+    const passwordValid = await  bcrypt.compare(password, user.password)
     if (!passwordValid) {
-    return res.status(400).json( "Password Incorrect" );
-  }
+      return res.status(400).json( "Password Incorrect" );
+    }
   
-  const token = jwt.sign({id : user.id},'hhhhh')
+  const token = jwt.sign({id : user.id}, dotenv.parsed.SECRET_KEY)
 
-   res.status(200).send({
-    id: user.id,
-    email: user.email,
-    phone_number: user.phone_number,
-    accessToken: token,
-});
+   res.status(200).send(token);
 }
  catch (error) {
-    console.log(error);
     return res.status(500).send("Sign in error");
   }
 }
