@@ -28,7 +28,7 @@ module.exports.signUp = async (req, res) => {
 module.exports.logIn = async (req, res) => {
   try {
     const { email,phone_number, password } = req.body;
-    const user = await User.findOne({ where: { email: req.body.email } });
+    const user = await User.findOne({ where: { email: req.body.email } })
     if (!user) {
         return res.status(404).json("User does not exist" );
     }
