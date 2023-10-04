@@ -2,7 +2,6 @@ const User = require("../model/index");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const dotenv = require('dotenv').config()
-
 //sign up 
 module.exports.signUp =  async (req, res) => {
   try {
@@ -55,20 +54,20 @@ module.exports.loginByPhoneNumber = async (req, res) => {
   try {
     const { phone_number, password } = req.body;
     const user = await User.findOne({ where: { phone_number: phone_number } })
-    
+
     if (!user) {
         return res.status(404).json("User does not exist" );
     }
     const passwordValid = await  bcrypt.compare(password, user.password)
     if (!passwordValid) {
-      return res.status(400).json( "Password Incorrect" );
-    }
+    return res.status(400).json( "Password Incorrect" );
+  }
   
   const token = jwt.sign({id : user.id}, dotenv.parsed.SECRET_KEY)
 
    res.status(200).send(token);
 }
  catch (error) {
-    return res.status(500).send("Sign in error");
+        return res.status(500).send("Sign in error");
   }
 }
