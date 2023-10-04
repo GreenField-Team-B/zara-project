@@ -11,7 +11,7 @@ module.exports.signUp =  async (req, res) => {
       where: { email: email},
     });
     if (find) {
-      return res.status(400).send("Email already exist");
+      return res.send("Email already exist");
     }
     const hashPassword = await bcrypt.hash(password, 10);
     await User.create({
@@ -32,21 +32,18 @@ module.exports.loginByEmail = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ where: { email: email } })
-    
     if (!user) {
-        return res.status(404).json("User does not exist" );
+        return res.send("User does not exist" );
     }
-    const passwordValid = await  bcrypt.compare(password, user.password)
+    const passwordValid = await bcrypt.compare(password, user.password)
     if (!passwordValid) {
-      return res.status(400).json( "Password Incorrect" );
+      return res.send( "Password Incorrect" );
     }
   
-  const token =  jwt.sign({id : user.id}, dotenv.parsed.SECRET_KEY)
-
+  const token = jwt.sign(user.dataValues, dotenv.parsed.SECRET_KEY)
    res.status(200).send(token);
 }
  catch (error) {
-  
     return res.status(500).send("Sign in error");
   }
 }
@@ -57,15 +54,16 @@ module.exports.loginByPhoneNumber = async (req, res) => {
     const user = await User.findOne({ where: { phone_number: phone_number } })
     
     if (!user) {
-        return res.status(404).json("User does not exist" );
+        return res.send("User does not exist" );
     }
     const passwordValid = await  bcrypt.compare(password, user.password)
     if (!passwordValid) {
-      return res.status(400).json( "Password Incorrect" );
+      return res.send( "Password Incorrect" );
     }
-  
-  const token = jwt.sign({id : user.id}, dotenv.parsed.SECRET_KEY)
-
+    
+    console.log(passwordValid)
+  const token = jwt.sign(user.dataValues, dotenv.parsed.SECRET_KEY)
+    console.log('token: ', token)
    res.status(200).send(token);
 }
  catch (error) {
