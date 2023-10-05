@@ -1,10 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Login from './pages/auth/Login.jsx'
 import axios from 'axios'
 
 const App = () => {
-  
   const setCookie = (cookieName, cookieValue, expirationDays) => {
     const d = new Date();
     d.setTime(d.getTime() + (expirationDays * 24 * 60 * 60 * 1000));
