@@ -28,7 +28,11 @@ const Product = connection.define(("product"),{
         type : DataTypes.INTEGER,
         allowNull: false,
         defaultValue:0
-    }
+    },
+    image: {
+        type : DataTypes.STRING,
+        allowNull: false,
+    },
 })
 return Product
 }
