@@ -1,4 +1,5 @@
 import React from 'react';
+import Navbar from '../../components/navBar/Navbar';
 import image from './imgs/image.png'
 import "./register.css"
 
@@ -26,6 +27,8 @@ const Register = ({registerNow}) => {
 
   return (
     <div>
+      <Navbar/>
+      <hr/>
       <div className="container1">
         <div className="left">
           <img src= {image} alt="tlifoun" />
