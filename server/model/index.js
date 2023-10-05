@@ -15,6 +15,8 @@ connection
   });
 
   const User = require('./user')(connection,DataTypes)
+  const Product = require('./product')(connection,DataTypes)
+  const Categories = require('./categories').default(connection,DataTypes)
 
   connection
   .sync({ force: true })
@@ -25,4 +27,4 @@ connection
     console.error("Unable to create table : ", error);
   });
 
-  module.exports = User
+  module.exports = { User, Product, Categories }
