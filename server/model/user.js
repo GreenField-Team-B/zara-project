@@ -6,12 +6,12 @@ module.exports=(connection,DataTypes)=>{
         },
         email: {
             type : DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             unique: true,
         },
         phone_number: {
             type : DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
             unique: true,
         },
         password: {
