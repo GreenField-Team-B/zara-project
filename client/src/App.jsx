@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Login from './pages/auth/Login.jsx'
 import axios from 'axios'
@@ -6,14 +6,12 @@ import { useDispatch } from 'react-redux';
 import { setUser } from './redux/userSlice.js'; // Import the setUser action
 
 const App = () => {
-
-  const dispatch = useDispatch();
+const dispatch = useDispatch();
 
   const handleSetUser = (userObj) => {
     const user = userObj;
     dispatch(setUser(user)); // Dispatch the setUser action with user data
   };
-  
   const setCookie = (cookieName, cookieValue, expirationDays) => {
     const d = new Date();
     d.setTime(d.getTime() + (expirationDays * 24 * 60 * 60 * 1000));
