@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const userRoute = require("./routes/user.routes")
 const productsRoute = require("./routes/product.routes")
-const categoriesRoute = require("./routes/categories.routes").default
+const categoriesRoute = require("./routes/categories.routes")
 require('./model/index');
 
 const port = 5000;

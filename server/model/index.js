@@ -16,7 +16,7 @@ connection
 
   const User = require('./user')(connection,DataTypes)
   const Product = require('./product')(connection,DataTypes)
-  const Categories = require('./categories').default(connection,DataTypes)
+  const Categories = require('./categories')(connection,DataTypes)
 
   connection
   .sync({ force: true })

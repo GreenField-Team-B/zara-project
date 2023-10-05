@@ -1,7 +1,7 @@
-import { Categories } from "../model/index";
+const { Categories } = require("../model/index");
 
 // The list categories.
-export const getAll = async (req, res) => {
+module.exports.getAll = async (req, res) => {
   try {
     const response = await Categories.findAll();
     res.send(response)
@@ -11,7 +11,7 @@ export const getAll = async (req, res) => {
 }
 
 // get one category by its id.
-export const getOne = async (req, res) => {
+module.exports.getOne = async (req, res) => {
     try {
         const response = await Categories.findOne({where: {id: req.params.categoryId}})
         res.send(response)
@@ -21,7 +21,7 @@ export const getOne = async (req, res) => {
 }
 
 // add category.
-export const addCategory = async (req, res) => {
+module.exports.addCategory = async (req, res) => {
     try {
         const response = await Categories.create(req.body)
         res.send(response)
@@ -31,7 +31,7 @@ export const addCategory = async (req, res) => {
 }
 
 // update category by id.
-export const updateCategory = async (req, res) => {
+module.exports.updateCategory = async (req, res) => {
     try {
         const response = await Categories.update(req.body, {where: {id: req.params.categoryId}})
         res.send(response)
@@ -41,7 +41,7 @@ export const updateCategory = async (req, res) => {
 }
 
 // delete category by id.
-export const deleteCategory = async (req, res) => {
+module.exports.deleteCategory = async (req, res) => {
     try {
         await Categories.destroy({where: {id: req.params.categoryId}})
         res.send(`category n°${req.params.categoryId} has been deleted successfully`)
