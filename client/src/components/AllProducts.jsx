@@ -1,8 +1,8 @@
 import React from 'react'
-
-const AllProducts = () => {
+import OneProduct from './OneProduct.jsx'
+const AllProducts = ({state}) => {
   return (
-    <div>AllProducts</div>
+    <div>{state.products.data.map((product)=>{ return <OneProduct key={product.id} product={product}/>})}</div>
   )
 }
 
