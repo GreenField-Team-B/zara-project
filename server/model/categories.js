@@ -1,4 +1,4 @@
-export default (connection,DataTypes) => {
+module.exports =  (connection,DataTypes) => {
     const Categories = connection.define(("categories"),{
         name: {
             type : DataTypes.STRING,
