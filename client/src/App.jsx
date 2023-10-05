@@ -2,8 +2,16 @@ import React, { useState } from 'react'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Login from './pages/auth/Login.jsx'
 import axios from 'axios'
+import { useDispatch } from 'react-redux';
+import { setUser } from './redux/userSlice.js'; // Import the setUser action
 
 const App = () => {
+const dispatch = useDispatch();
+
+  const handleSetUser = (userObj) => {
+    const user = userObj;
+    dispatch(setUser(user)); // Dispatch the setUser action with user data
+  };
   const setCookie = (cookieName, cookieValue, expirationDays) => {
     const d = new Date();
     d.setTime(d.getTime() + (expirationDays * 24 * 60 * 60 * 1000));
@@ -12,7 +20,7 @@ const App = () => {
   }
 
   const deleteCookies = (cookieName) => {
-    document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC;`;    
+    document.cookie = `${cookieName}=; expires=Thu, 11 Sep 2001 00:00:00 UTC;`;    
   }
   
   const handleLogin = async (user) => {
