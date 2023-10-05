@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Login from './pages/auth/Login.jsx'
 import axios from 'axios'
+import Register from './pages/auth/Register.jsx'
 import { useDispatch } from 'react-redux';
 import { setUser } from './redux/userSlice.js'; // Import the setUser action
 
@@ -38,6 +39,14 @@ const dispatch = useDispatch();
       console.error(err)
     }
   }
+  const registerNow = async(body)=>{
+    try {
+      const user = await axios.post("http://127.0.0.1:5000/api/user/signup",body)
+
+    } catch (error) {
+      throw Error(error)
+    }
+  }
 
 
   return (
@@ -45,6 +54,10 @@ const dispatch = useDispatch();
       <Routes>
         <Route path='/login' element={<Login handleLogin={handleLogin}/>}/>
       </Routes>
+      <Routes>
+        <Route path='register' element = {<Register registerNow = {registerNow} />} />
+      </Routes>
+
     </BrowserRouter>
   )
 }

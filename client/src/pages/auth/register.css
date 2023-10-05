@@ -1,0 +1,297 @@
+  /* Base styles */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+* {
+    box-sizing: border-box;
+  }
+
+
+.container1 {
+    font-family: 'Roboto', sans-serif;
+     max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    background: #FFF; 
+    align-items: center;
+}
+h2 h5		 { 
+    text-align:center; 
+    margin-bottom:50px; 
+}
+  h2 h5 small { 
+    font-weight:normal; 
+    color:#888; 
+    display:block; 
+  }
+  .footer 	{ text-align:center; }
+  .footer a  { color:#53B2C8; }
+  
+  /* form starting stylings ------------------------------- */
+  .group 			  { 
+    position:relative; 
+    margin-bottom:45px; 
+  }
+  input {
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #757575;
+}
+  input:focus 		{ outline:none; }
+  
+  /* LABEL ======================================= */
+  label {
+    color: #999;
+    font-size: 16px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+  
+  /* active state */
+  input:focus ~ label, input:valid ~ label 		{
+    top:-20px;
+    font-size:14px;
+    color:#5264AE;
+  }
+  
+  /* BOTTOM BARS ================================= */
+  .bar 	{ position:relative; display:block; width:300px; }
+  .bar:before, .bar:after 	{
+    content:'';
+    height:2px; 
+    width:0;
+    bottom:1px; 
+    position:absolute;
+    background:#5264AE; 
+    transition:0.2s ease all; 
+    -moz-transition:0.2s ease all; 
+    -webkit-transition:0.2s ease all;
+  }
+  .bar:before {
+    left:50%;
+  }
+  .bar:after {
+    right:50%; 
+  }
+  
+  /* active state */
+  input:focus ~ .bar:before, input:focus ~ .bar:after {
+    width:50%;
+  }
+  
+  /* HIGHLIGHTER ================================== */
+  .highlight {
+    position:absolute;
+    height:60%; 
+    width:100px; 
+    top:25%; 
+    left:0;
+    pointer-events:none;
+    opacity:0.5;
+  }
+  
+  /* active state */
+  input:focus ~ .highlight {
+    -webkit-animation:inputHighlighter 0.3s ease;
+    -moz-animation:inputHighlighter 0.3s ease;
+    animation:inputHighlighter 0.3s ease;
+  }
+  .container1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* .left {
+    padding: 2rem;
+} */
+
+.right {
+    margin-right: 12rem;
+    padding: 2rem;
+    text-align: center;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    margin: 0rem;
+}
+
+/* Add your other CSS styles as needed for the form elements and image */
+
+  
+  /* ANIMATIONS ================ */
+  @-webkit-keyframes inputHighlighter {
+      from { background:#5264AE; }
+    to 	{ width:0; background:transparent; }
+  }
+  @-moz-keyframes inputHighlighter {
+      from { background:#5264AE; }
+    to 	{ width:0; background:transparent; }
+  }
+  @keyframes inputHighlighter {
+      from { background:#5264AE; }
+    to 	{ width:0; background:transparent; }
+  }
+  /* Media query for screens smaller than 768px */
+@media (max-width: 1000px) {
+    .container1 {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .right {
+        padding: 20px ;
+    }
+
+    input {
+        width: 80%;
+    }
+}
+/* Variables */
+:root {
+    --white: #fff;
+    --google-blue: #4285f4;
+    --button-active-blue: #1669F2;
+  }
+  
+  /* Google Button Styles */
+  .google-btn {
+    width: 184px;
+    height: 42px;
+    background-color: var(--google-blue);
+    border-radius: 2px;
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .25);
+    position: relative;
+    text-align: center;
+  }
+  
+  .google-icon-wrapper {
+    position: absolute;
+    margin-top: 1px;
+    margin-left: 1px;
+    width: 40px;
+    height: 40px;
+    border-radius: 2px;
+    background-color: var(--white);
+  }
+  
+  .google-icon {
+    position: absolute;
+    margin-top: 11px;
+    margin-left: 11px;
+    width: 18px;
+    height: 18px;
+  }
+  
+  .btn-text {
+    float: right;
+    margin: 11px 11px 0 0;
+    color: var(--white);
+    font-size: 14px;
+    letter-spacing: 0.2px;
+    font-family: "Roboto", sans-serif;
+  }
+  
+  .google-btn:hover {
+    box-shadow: 0 0 6px var(--google-blue);
+  }
+  
+  /* .google-btn:active {
+    background: var(--button-active-blue);
+  } */
+
+
+
+
+
+
+  /* Variables */
+:root {
+    --white: #fff;
+    --google-blue: #4285f4;
+    --button-active-blue: #1669F2;
+  }
+  
+  /* Google Button Styles */
+  .google-btn {
+    width: 18.75rem;
+    height: 40px;
+    background-color: var(--google-blue);
+    border: none;
+    border-radius: 4px;
+    color: var(--white);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .google-btn:hover {
+    background-color: #357ae8;
+  }
+  
+  /* .google-btn:active {
+    background-color: var(--button-active-blue);
+  } */
+  .Creat-btn{
+    width: 18.75rem;
+    height: 40px;
+    background-color: red;
+    border: none;
+    border-radius: 4px;
+    color: var(--white);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+
+  }
+  .Creat-btn:hover{
+    background-color: #e83835;
+
+  }
+/* 
+  .Creat-btn:active{
+    background-color: var(--button-active-blue);
+  } */
+
+  
+  
+  /* Import Google Fonts */
+  /* @import url('https://fonts.googleapis.com/css?family=Roboto:500'); */
+  
+
+
+/* Responsive design using media queries */
+
+/* For screens smaller than 768px */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+}
+
+/* For screens smaller than 576px */
+@media (max-width: 576px) {
+    .container {
+        padding: 5px;
+    }
+    .nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
