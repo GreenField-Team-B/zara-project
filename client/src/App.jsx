@@ -3,6 +3,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Login from './pages/auth/Login.jsx'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux';
+import Register from './pages/auth/Register.jsx'
 import { setUser } from './redux/userSlice.js'; // Import the setUser action
 import { fetchProductData } from './redux/userSlice.js';
 import AllProducts from './components/AllProducts.jsx';
@@ -46,6 +47,14 @@ useEffect(()=>{
       console.error(err)
     }
   }
+  const registerNow = async(body)=>{
+    try {
+      const user = await axios.post("http://127.0.0.1:5000/api/user/signup",body)
+
+    } catch (error) {
+      throw Error(error)
+    }
+  }
 
 
   return (
@@ -54,6 +63,10 @@ useEffect(()=>{
         <Route path='/login' element={<Login handleLogin={handleLogin}/>}/>
       <Route path='/allproducts' element={< AllProducts state= {state}/>}/>
       </Routes>
+      <Routes>
+        <Route path='register' element = {<Register registerNow = {registerNow} />} />
+      </Routes>
+
     </BrowserRouter>
   )
 }
