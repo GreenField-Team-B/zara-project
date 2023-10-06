@@ -1,6 +1,5 @@
 import React,{useEffect} from 'react'
 import OneProduct from './OneProduct.jsx'
-
 import {useSelector,useDispatch} from 'react-redux'
 import  {fetchProductData}  from '../redux/productSlice.js';
 
