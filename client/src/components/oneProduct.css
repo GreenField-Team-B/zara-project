@@ -1,0 +1,122 @@
+.container {
+display: flex;
+align-items: flex-start;
+flex-direction: column;
+gap: 30px;
+}
+.cart {
+  gap: 16px;
+  align-items: flex-start;
+  flex-direction: column;
+  display: flex;
+}
+.container-top {
+  height: 220px;
+  width: 250px;
+  border-radius: 4px;
+  background: (--Secondary, white);
+}
+.new-icon {
+  top: 40px;
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 12px;
+  background: var(--Button1, #0f6);
+  border-radius: 4px;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  color: var(--Text, #fafafa);
+  line-height: 18px;
+  font-weight: 400;
+  margin-left: 16px;
+}
+.image {
+    margin-top: 30px;
+  left: 100px;
+  position: absolute;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-left: 25px;
+  width: 200px;
+  height: 200px;
+  transform: translate(-50%, -50%);
+}
+
+.icons {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 135px;
+  margin-top: 10px;
+  gap: 15px;
+}
+.heart {
+  width: 25px;
+  height: 25px;
+  flex-shrink: 0;
+}
+
+.quick-view {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 2.388px 5px 2.387px;
+  flex-shrink: 0;
+  color: #000;
+}
+
+.inf {
+  gap: 0.1px;
+  align-items: flex-start;
+  flex-direction: column;
+  display: flex;
+  line-height: 1px;
+}
+.name {
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1px;
+  color: #000;
+}
+.frame {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.price {
+  font-family: Poppins;
+  font-size: 16px;
+  color: var(--Secondary-2, #db4444);
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1px;
+}
+/* stars css */
+.checked {
+    color: orange;
+  }
+
+.number {
+  color: var(--Text2, #8d8a8a);
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  width: 20px;
+  height: 20px;
+  font-weight: 600;
+  line-height: 21px;
+}
+.color {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    line-height: 1px;
+}
