@@ -52,17 +52,17 @@ gap: 30px;
   align-items: flex-start;
   margin-left: 135px;
   margin-top: 10px;
-  gap: 0.1px;
+  gap: 15px;
 }
 .heart {
-  width: 34px;
-  height: 34px;
+  width: 25px;
+  height: 25px;
   flex-shrink: 0;
 }
 
 .quick-view {
-  width: 34px;
-  height: 34px;
+  width: 25px;
+  height: 25px;
   display: flex;
   align-items: center;
   justify-content: center;
