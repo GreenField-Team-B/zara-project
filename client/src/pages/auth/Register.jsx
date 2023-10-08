@@ -1,4 +1,5 @@
 import React from 'react';
+import Navbar from '../../components/navBar/Navbar';
 import image from './imgs/image.png'
 import "./register.css"
 import { useNavigate } from 'react-router-dom';
@@ -58,7 +59,7 @@ const Register = ({registerNow}) => {
               <span className="bar"></span>
               <label>Password</label>
             </div>
-            <button className="Creat-btn" onClick={()=>{ validateInput(body); registerNow(body)} }>Create an account</button>
+            <button className="Creat-btn" onClick={()=>{ validateInput(body); registerNow(body);console.log(body)}  }>Create an account</button>
             <br />
             <br />
             <button className="google-btn">Sign Up with Google</button>

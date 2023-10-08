@@ -4,27 +4,12 @@ const connection = new Sequelize("commerce", "root", "root", {
   dialect: "mysql",
 });
 
-connection
-  .authenticate()
-  .then(() => {
-    console.log("Connection has been established successfully.");
+
+
+  connection.authenticate().then(()=> console.log('Connection has been established successfully.'))
+  .catch( (error)=> {
+    console.error('Unable to connect to the database:', error);
   })
 
-  .catch((error) => {
-    console.error("Unable to connect to the database:", error);
-  });
-
-  const User = require('./user')(connection,DataTypes)
-  const Product = require('./product')(connection,DataTypes)
-  const Categories = require('./categories')(connection,DataTypes)
-
-  connection
-  .sync({ force: true })
-  .then(() => {
-    console.log("tables created successfully!");
-  })
-  .catch((error) => {
-    console.error("Unable to create table : ", error);
-  });
-
-  module.exports = { User, Product, Categories }
+  
+module.exports = connection;

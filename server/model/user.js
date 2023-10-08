@@ -1,4 +1,7 @@
-module.exports=(connection,DataTypes)=>{
+const connection = require("./index")
+const {Sequelize, DataTypes} = require("sequelize")
+
+
     const User  = connection.define("user",{
         username: {
             type : DataTypes.STRING(45),
@@ -23,5 +26,6 @@ module.exports=(connection,DataTypes)=>{
             allowNull: false,
         },
     })
-    return User;
-}
+
+
+module.exports = User;

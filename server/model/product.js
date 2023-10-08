@@ -1,5 +1,8 @@
-module.exports = (connection,DataTypes) => {
-const Product = connection.define(("product"),{
+const connection = require("./index")
+const {Sequelize , DataTypes} = require("sequelize")
+
+
+const Product = connection.define("product",{
     name: {
         type : DataTypes.STRING,
         allowNull: false,
