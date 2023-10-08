@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from '../../components/navBar/Navbar';
 import image from './imgs/image.png'
 import "./register.css"
 import { useNavigate } from 'react-router-dom';
