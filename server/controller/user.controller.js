@@ -1,4 +1,7 @@
+
 const  {User}  = require("../model/populate");
+// const {User} = require("../model/index");
+
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const dotenv = require('dotenv').config()
@@ -78,5 +81,19 @@ module.exports = {
       throw Error(error)
     }
   }
-
 }
+
+// verify  the token
+module.exports.handleToken = (req, res) => {
+  const token = req.body.token;
+  if (token) {
+    try {
+      const verification = jwt.verify(token, process.env.SECRET_KEY);
+      return res.send(verification);
+    } catch (error) {
+      throw error
+    }
+  }
+   res.send("Token not found ")
+
+};
