@@ -1,30 +1,44 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { useEffect } from 'react';
 
-
-
-// useEffect(async () => {
-//     const response = await axios.post('http://127.0.0.1:5000/api/user/token', )
-// }, [])
-
-const initialState = {
-  user: null, // Initial user state
+const sendTokenToServer = async (token) => {
+  try {
+    const response = await axios.post('http://127.0.0.1:5000/api/user/token', { token });
+    return response.data; // Assuming the server responds with the user object.
+  } catch (error) {
+    throw error; // Handle errors appropriately.
+  }
 };
+
+
+// userSlice.js
 
 const userSlice = createSlice({
   name: 'user',
-  initialState,
+  initialState: null, // Initial state can be null or an empty object.
   reducers: {
     setUser: (state, action) => {
-      state.user = action.payload; // Set the user data
-    },
-    clearUser: (state) => {
-      state.user = null; // Clear user data
+      return action.payload; // Set the user object in the state.
     },
   },
 });
 
-export const { setUser, clearUser } = userSlice.actions;
-export const selectUser = (state) => state.user.user; // Selector to get user data
+
+// Thunk function
+export const verifyTokenAndSetUser = (token) => async (dispatch) => {
+  try {
+    const user = await sendTokenToServer(token); // Use the Axios function from step 1.
+    dispatch(setUser(user)); // Dispatch the setUser action with the user object.
+  } catch (error) {
+    console.error(error)
+  }
+};
+
+
+// to get user's object in all components use:
+// 
+// import { useSelector } from 'react-redux'
+// 
+// const user = useSelector((state) => state.user);
+export const { setUser } = userSlice.actions;
 export default userSlice.reducer;

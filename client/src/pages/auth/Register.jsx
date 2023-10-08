@@ -1,8 +1,14 @@
 import React from 'react';
 import image from './imgs/image.png'
 import "./register.css"
+import { useNavigate } from 'react-router-dom';
+import Navbar from '../../components/navBar/Navbar.jsx';
+import Footer from '../../components/Footer.jsx';
 
 const Register = ({registerNow}) => {
+
+  const navigate = useNavigate()
+
    let body = {}
    body.role = "client"
 
@@ -15,10 +21,10 @@ const Register = ({registerNow}) => {
     obj.email = null
     if(!phonePattern.test(obj.phone_number)){
       obj.phone_number = null
-      return 
+      return navigate('/login')
     } 
     else{
-      return
+      return navigate('/login')
     }
    }
   
@@ -26,6 +32,7 @@ const Register = ({registerNow}) => {
 
   return (
     <div>
+      <Navbar/>
       <div className="container1">
         <div className="left">
           <img src= {image} alt="tlifoun" />
@@ -58,6 +65,7 @@ const Register = ({registerNow}) => {
           
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };
