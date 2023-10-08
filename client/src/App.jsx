@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import {BrowserRouter, Routes, Route, useNavigate} from 'react-router-dom'
 import Login from './pages/auth/Login.jsx'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux';
 import Register from './pages/auth/Register.jsx'
-import { setUser } from './redux/userSlice.js'; // Import the setUser action
+import { setUser, verifyTokenAndSetUser } from './redux/userSlice.js'; // Import the setUser action
 import AllProducts from './components/AllProducts.jsx';
 
 
@@ -40,6 +40,7 @@ const App = () => {
       }
       const response = await axios.post(`http://127.0.0.1:5000/api/user/${endPoint}`, user)
       setCookie('token', response.data, 30)
+      dispatch(verifyTokenAndSetUser(response.data))
     } catch (err) {
       console.error(err)
     }
