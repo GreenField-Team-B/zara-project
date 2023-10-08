@@ -6,8 +6,6 @@ const store = configureStore({
     reducer: {
       user,
     products
-
-    }
   })
 
 export default store;
