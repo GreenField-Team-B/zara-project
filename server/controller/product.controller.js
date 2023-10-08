@@ -1,4 +1,4 @@
-const  {Product}  = require("../model/index");
+const  {Product}  = require("../model/populate");
 // The list products.
 module.exports.getAll = async (req, res) => {
   try {
@@ -64,6 +64,14 @@ module.exports.getByPrice = async (req, res) => {
     console.log(error);
   }
 };
+module.exports.getAllProduact = async (req,res)=>{
+  try {
+    const all = await Product.findAll({include:{all:true,nested:true}})
+    res.status(200).send(all);
+  } catch (error) {
+    throw Error(error)
+  }
+}
 // get by category
 
 

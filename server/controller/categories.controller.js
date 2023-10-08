@@ -1,4 +1,4 @@
-const { Categories } = require("../model/index");
+const { Categories } = require("../model/populate");
 
 // The list categories.
 module.exports.getAll = async (req, res) => {
