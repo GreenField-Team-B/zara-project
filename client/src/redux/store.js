@@ -6,7 +6,6 @@ const store = configureStore({
     reducer: {
       user: userReducer,
       products: productReducer,
-
     }
   })
 
