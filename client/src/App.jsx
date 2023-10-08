@@ -5,17 +5,14 @@ import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux';
 import Register from './pages/auth/Register.jsx'
 import { setUser } from './redux/userSlice.js'; // Import the setUser action
-import { fetchProductData } from './redux/productSlice.js'
 import AllProducts from './components/AllProducts.jsx';
+
+
 
 const App = () => {
 
   const dispatch = useDispatch();
-  const state =useSelector((state)=>state.products)
-console.log('state',state);  
-useEffect(()=>{
-    dispatch(fetchProductData())
-  },[])
+
 
   const handleSetUser = (userObj) => {
     const user = userObj;
@@ -61,7 +58,7 @@ useEffect(()=>{
     <BrowserRouter>
       <Routes>
         <Route path='/login' element={<Login handleLogin={handleLogin}/>}/>
-      <Route path='/allproducts' element={< AllProducts state= {state}/>}/>
+      <Route path='/allproducts' element={< AllProducts />}/>
       </Routes>
       <Routes>
         <Route path='register' element = {<Register registerNow = {registerNow} />} />

@@ -1,8 +1,20 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import OneProduct from './OneProduct.jsx'
-const AllProducts = ({state}) => {
+import {useSelector,useDispatch} from 'react-redux'
+import  {fetchProductData}  from '../redux/productSlice.js';
+
+const AllProducts = () => {
+  const dispatch = useDispatch();
+  const products = useSelector((state)=>state.products?.data)
+
+// console.log('state',state);  
+useEffect(()=>{
+    dispatch(fetchProductData())
+  },[dispatch])
+
   return (
-    <div>{state.data.map((product)=>{ return <OneProduct key={product.id} product={product}/>})}</div>
+    <div>{products.map((product)=>{ return <OneProduct key={product.id} product={product}/>})}</div>
+    
   )
 }
 
