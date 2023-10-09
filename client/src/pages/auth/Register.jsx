@@ -53,7 +53,7 @@ const Register = ({registerNow}) => {
               <label>Email</label>
             </div>
             <div className="group">
-              <input type="text" required onChange={(e)=> body.password = e.target.value} />
+              <input type="password" required onChange={(e)=> body.password = e.target.value} />
               <span className="highlight"></span>
               <span className="bar"></span>
               <label>Password</label>
