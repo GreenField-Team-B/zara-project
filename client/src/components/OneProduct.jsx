@@ -8,17 +8,20 @@ const OneProduct = ({ product }) => {
   const daysDifference = moment().diff(createdAtmoment, "days");
   const isNew = daysDifference <= 7;
   return (
-    <div className="cart">
+    <div className="card">
       <div className="container-top">
       {isNew ? <p className="new-icon">New</p> : null}
-        <img
-          className="image"
-          src={product.image}
-        />
         <div className="icons">
           <img className="heart" src={heartImage} alt="heart"/>
           <img className="quick-view" src={groupImage} alt="group" />
         </div>
+      </div>
+
+      <div className="imgContainer">
+        <img
+          className="image"
+          src={product.image}
+          />
       </div>
 
       <div className="inf">
