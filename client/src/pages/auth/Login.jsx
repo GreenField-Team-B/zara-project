@@ -3,14 +3,19 @@ import Navbar from '../../components/navBar/Navbar.jsx'
 import Footer from '../../components/Footer.jsx'
 import image from './imgs/image.png'
 import './login.scss'
+import { useNavigate } from 'react-router-dom'
 
 const Login = ({handleLogin}) => {
-
+    
     const [identifier, setIdentifier] = useState('')
     const [password, setPassword] = useState('')
+    
+    const navigate = useNavigate()
 
     const handleClick = () => {
-        handleLogin({identifier, password})
+        if(handleLogin({identifier, password})) {
+            return navigate('/')
+        }
     }
 
   return (

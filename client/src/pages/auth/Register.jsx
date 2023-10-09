@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from '../../components/navBar/Navbar';
 import image from './imgs/image.png'
 import "./register.css"
 import { useNavigate } from 'react-router-dom';
@@ -54,7 +53,7 @@ const Register = ({registerNow}) => {
               <label>Email</label>
             </div>
             <div className="group">
-              <input type="text" required onChange={(e)=> body.password = e.target.value} />
+              <input type="password" required onChange={(e)=> body.password = e.target.value} />
               <span className="highlight"></span>
               <span className="bar"></span>
               <label>Password</label>
