@@ -38,4 +38,4 @@ const Product = connection.define("product",{
     },
 })
 return Product
-}
+

@@ -8,6 +8,6 @@ const connection = require("./index")
   Product.hasOne(Categories)  
   User.belongsToMany(Product, {through: WishList})
   Product.belongsToMany(User, {through: WishList})
-  //  connection.sync({force:true})
+   connection.sync({force:true})
 
 module.exports = { User, Product, Categories , WishList }
