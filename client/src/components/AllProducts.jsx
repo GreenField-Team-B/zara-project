@@ -2,6 +2,7 @@ import React,{useEffect} from 'react'
 import OneProduct from './OneProduct.jsx'
 import {useSelector,useDispatch} from 'react-redux'
 import  {fetchProductData}  from '../redux/productSlice.js';
+import "./allProducts.css";
 
 const AllProducts = () => {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ useEffect(()=>{
   },[dispatch])
 
   return (
-    <div>{products.map((product)=>{ return <OneProduct key={product.id} product={product}/>})}</div>
+    <div className='product-container' >{products.map((product)=>{ return <OneProduct key={product.id} product={product}/>})}</div>
     
   )
 }
