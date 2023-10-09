@@ -37,5 +37,5 @@ const Product = connection.define("product",{
         allowNull: false,
     },
 })
-return Product
 
+module.exports = Product;
