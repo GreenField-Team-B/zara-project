@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Register from './pages/auth/Register.jsx'
 import { setUser, verifyTokenAndSetUser } from './redux/userSlice.js'; // Import the setUser action
 import AllProducts from './components/AllProducts.jsx';
+import Landing from './pages/landing.jsx';
 
 
 
@@ -59,7 +60,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path='/login' element={<Login handleLogin={handleLogin}/>}/>
-      <Route path='/allproducts' element={< AllProducts />}/>
+      <Route path='/' element={< Landing />}/>
       </Routes>
       <Routes>
         <Route path='register' element = {<Register registerNow = {registerNow} />} />
