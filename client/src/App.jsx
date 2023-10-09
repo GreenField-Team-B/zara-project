@@ -53,13 +53,22 @@ const App = () => {
       throw Error(error)
     }
   }
+ 
+  const search= async(name)=>{
+    try {
+      const user = await axios.post(`http://127.0.0.1:5000/api/products/getByName/${name}`)
 
+    } catch (error) {
+      throw Error(error)
+    }
+  }
+  
 
   return (
     <BrowserRouter>
       <Routes>
         <Route path='/login' element={<Login handleLogin={handleLogin}/>}/>
-      <Route path='/allproducts' element={< AllProducts />}/>
+      <Route path='/allproducts' element={< AllProducts search={search}/>}/>
       </Routes>
       <Routes>
         <Route path='register' element = {<Register registerNow = {registerNow} />} />
