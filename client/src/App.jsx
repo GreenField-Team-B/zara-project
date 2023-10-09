@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Register from './pages/auth/Register.jsx'
 import { setUser, verifyTokenAndSetUser } from './redux/userSlice.js'; // Import the setUser action
 import AllProducts from './components/AllProducts.jsx';
-import Landing from './pages/landing.jsx';
+import Landing from './pages/Landing.jsx';
 
 
 
