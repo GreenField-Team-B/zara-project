@@ -39,8 +39,12 @@ const App = () => {
         user = {phone_number: user.identifier, password: user.password}
       }
       const response = await axios.post(`http://127.0.0.1:5000/api/user/${endPoint}`, user)
-      setCookie('token', response.data, 30)
-      dispatch(verifyTokenAndSetUser(response.data))
+      if(response.data !== "User does not exist" && response.data !== "Password Incorrect") {
+        setCookie('token', response.data, 30)
+        dispatch(verifyTokenAndSetUser(response.data))
+        return true
+      }
+      return false
     } catch (err) {
       console.error(err)
     }
