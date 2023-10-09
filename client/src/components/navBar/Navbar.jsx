@@ -1,5 +1,6 @@
 import React from 'react'
 import "./nav.css"
+import Search from './Search.jsx';
 
 const Navbar = () => {
   return (
@@ -30,7 +31,7 @@ const Navbar = () => {
               <div className="nav-item">Sign Up</div>
             </div>
             <div className="search-bar">
-              <input id="search-label" placeholder="What are you looking for?" />
+              <Search/>
             </div>
           </div>
         </div>
