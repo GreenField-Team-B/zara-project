@@ -5,6 +5,7 @@ flex-direction: column;
 gap: 30px;
 }
 .cart {
+  margin-left: 1vw;
   gap: 16px;
   align-items: flex-start;
   flex-direction: column;
@@ -31,12 +32,12 @@ gap: 30px;
   color: var(--Text, #fafafa);
   line-height: 18px;
   font-weight: 400;
-  margin-left: 16px;
+  /* z-index: 0; */
 }
 .image {
     margin-top: 30px;
   left: 100px;
-  position: absolute;
+  /* position: absolute; */
   align-items: center;
   display: flex;
   justify-content: center;
@@ -44,13 +45,14 @@ gap: 30px;
   width: 200px;
   height: 200px;
   transform: translate(-50%, -50%);
+  /* z-index: -1; */
 }
 
 .icons {
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-left: 135px;
+  margin-left: 145px;
   margin-top: 10px;
   gap: 15px;
 }
